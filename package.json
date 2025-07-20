@@ -1,0 +1,34 @@
+{
+  "name": "vslog",
+  "displayName": "vslog",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "activationEvents": [
+    "onCommand:vslog.openWebview"
+  ],
+  "scripts": {
+    "ui:dev": "cd ui && npm install && npm run dev",
+    "ui:build": "cd ui && npm install && npm run build",
+    "dev": "concurrently \"npm:ui:dev\" \"cross-env NODE_ENV=development code --new-window --extensionDevelopmentPath=$PWD -- $PWD\"",
+    "prod": "npm run ui:build && cross-env NODE_ENV=production code --new-window --extensionDevelopmentPath=$PWD -- $PWD"
+  },
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vslog.openWebview",
+        "title": "VSLog: Open Log View"
+      }
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "cross-env": "^7.0.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}

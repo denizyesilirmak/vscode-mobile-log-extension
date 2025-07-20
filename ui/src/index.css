@@ -1,0 +1,54 @@
+:root {
+  /* Base text & background */
+  --vscode-bg: var(--vscode-editor-background);
+  --vscode-fg: var(--vscode-editor-foreground);
+
+  /* Button, input, border colors */
+  --vscode-button-bg: var(--vscode-button-background);
+  --vscode-button-fg: var(--vscode-button-foreground);
+  --vscode-input-bg: var(--vscode-input-background);
+  --vscode-input-fg: var(--vscode-input-foreground);
+
+  /* Accent, hover, selection etc. */
+  --vscode-list-active-bg: var(--vscode-list-activeSelectionBackground);
+  --vscode-list-active-fg: var(--vscode-list-activeSelectionForeground);
+
+  /* Font family and size */
+  --vscode-editor-font-family: var(--vscode-editor-font-family);
+  --vscode-editor-font-size: var(--vscode-editor-font-size);
+  --vscode-editor-line-height: var(--vscode-editor-line-height);
+  --vscode-editor-font-weight: var(--vscode-editor-font-weight);
+  --vscode-editor-letter-spacing: var(--vscode-editor-letter-spacing);
+  --vscode-editor-letter-spacing: var(--vscode-editor-letter-spacing);
+  --vscode-editor-font-weight-bold: var(--vscode-editor-font-weight-bold);  
+
+  /* Additional colors */
+  --vscode-input-placeholder-fg: var(--vscode-input-placeholderForeground);
+  --vscode-input-border: var(--vscode-input-border);
+  --vscode-input-border-active: var(--vscode-input-activeOptionBorder);
+  --vscode-input-border-hover: var(--vscode-input-hoverBorder);
+  --vscode-input-border-focus: var(--vscode-input-focusBorder);
+  --vscode-input-validation-error-bg: var(--vscode-input-validationErrorBackground);  
+}
+
+body {
+  background: var(--vscode-bg);
+  color: var(--vscode-fg);
+  font-family: var(--vscode-editor-font-family);
+  font-size: var(--vscode-editor-font-size);
+}
+button {
+  background: var(--vscode-button-bg);
+  color: var(--vscode-button-fg);
+  border: 1px solid var(--vscode-button-fg);
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input {
+  background: var(--vscode-input-bg);
+  color: var(--vscode-input-fg);
+  border: 1px solid var(--vscode-input-fg);
+  padding: 4px 6px;
+  border-radius: 4px;
+}

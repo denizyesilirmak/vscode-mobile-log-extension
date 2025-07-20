@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VSLog View</title>
+  <style>
+    body { 
+      font-family: sans-serif; 
+      margin: 20px; 
+      background-color: var(--vscode-editor-background);
+      color: var(--vscode-editor-foreground);
+    }
+    .time { 
+      color: #007acc; 
+      font-weight: bold; 
+    }
+    button { 
+      margin-top: 10px;
+      background-color: var(--vscode-button-background);
+      color: var(--vscode-button-foreground);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: var(--vscode-button-hoverBackground);
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 VSLog</h1>
+  <p>Current time: <span class="time" id="current-time">{{TIME_PLACEHOLDER}}</span></p>
+  <button onclick="update()">Refresh Time</button>
+  
+  <script>
+    const vscode = acquireVsCodeApi();
+    
+    function update() {
+      const t = new Date().toLocaleTimeString();
+      document.querySelector('#current-time').textContent = t;
+      vscode.postMessage({ command: 'alert', text: 'Time updated to ' + t });
+    }
+  </script>
+</body>
+</html>

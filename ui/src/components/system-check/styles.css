@@ -1,0 +1,44 @@
+.system-check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  max-width: 600px;
+  background-color: var(--vscode-bg);
+  border-radius: 12px;
+  color: var(--vscode-fg);
+}
+
+.system-check h1 {
+  margin-bottom: 8px;
+  color: var(--vscode-fg);
+}
+
+.system-check p {
+  margin-bottom: 12px;
+  text-align: center;
+  color: var(--vscode-fg);
+}
+
+.system-check ul {
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.system-check li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  margin-bottom: 4px;
+  background-color: var(--vscode-input-bg);
+  border-radius: 6px;
+  color: var(--vscode-input-fg);
+  border: 1px solid var(--vscode-input-border);
+}
+
+.check-result {
+  font-weight: 600;
+}
