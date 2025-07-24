@@ -1,4 +1,3 @@
-import { use, useState } from "react";
 import DevicePicker from "../../components/devicePicker/index.jsx";
 import SystemCheck from "../../components/system-check/index.jsx";
 import {
