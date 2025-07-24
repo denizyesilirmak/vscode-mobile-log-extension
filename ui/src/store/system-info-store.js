@@ -64,9 +64,17 @@ export const useSystemInfoStore = create((set, get) => {
 });
 
 export const useAdbDevices = () => {
-  const devices = useSystemInfoStore(state => state.adbDevices);
+  const devices = useSystemInfoStore((state) => state.adbDevices);
   return {
     devices,
     isLoading: devices === null,
+  };
+};
+
+export const useSimulatorDevices = () => {
+  const devices = useSystemInfoStore((state) => state.simulatorDevices);
+  return {
+    devices,
+    isLoading: devices.length === 0,
   };
 };

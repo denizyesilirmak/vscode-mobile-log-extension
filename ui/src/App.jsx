@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import HomeScreen from "./assets/home/HomeScreen.jsx";
+import HomeScreen from "./screens/home/HomeScreen.jsx";
 import { useSystemInfoStore } from "./store/system-info-store.js";
 
 function App() {

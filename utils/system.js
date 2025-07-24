@@ -1,5 +1,18 @@
 const { execSync } = require("child_process");
 
+const parseDeviceString = (input) => {
+  const m = input.match(/^([^(]+)\s+\(([0-9A-F-]+)\)/i);
+  if (!m) return null;
+
+  const name = m[1].trim();
+  const serial = m[2].trim();
+
+  const parts = name.split("-");
+  const model = parts[parts.length - 1];
+
+  return { name, serial, model: "ios" };
+};
+
 const checkAdbInstalled = () => {
   try {
     execSync("adb version", { stdio: "ignore" });
@@ -84,9 +97,15 @@ const getSimulatorList = () => {
     const output = execSync("xcrun simctl list devices", { encoding: "utf8" });
     const devices = output
       .split("\n")
-      .filter((line) => line.includes("Booted"));
-    return devices.map((device) => device.trim());
+      .filter((line) => line.includes("(Booted)"))
+      .map((line) => {
+        return parseDeviceString(line);
+      })
+      .filter(Boolean); // Remove null results
+    
+    return devices;
   } catch (error) {
+    console.error("Error getting simulator list:", error.message);
     return [];
   }
 };

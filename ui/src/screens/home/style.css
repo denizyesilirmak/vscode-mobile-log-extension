@@ -5,3 +5,11 @@
     justify-content: center;
     height: 100vh;
 }
+
+.device-selection {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+    display: flex;
+    gap: 20px;
+}

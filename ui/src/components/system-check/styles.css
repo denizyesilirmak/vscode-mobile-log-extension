@@ -37,8 +37,23 @@
   border-radius: 6px;
   color: var(--vscode-input-fg);
   border: 1px solid var(--vscode-input-border);
+  align-items: center;
 }
 
 .check-result {
   font-weight: 600;
+  margin-left: 60px;
+}
+
+.check-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+}
+
+.check-item-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }

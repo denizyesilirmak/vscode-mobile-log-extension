@@ -15,7 +15,7 @@ const DevicePicker = ({ devices, selectedDevice, onDeviceChange }) => {
     }
 
     const getDeviceDisplayName = (device) => {
-        return device ? `${device.name})` : "";
+        return device ? `${device.name}` : "";
     };
 
     return (
