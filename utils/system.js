@@ -11,13 +11,29 @@ const checkAdbInstalled = () => {
 
 const getAdbDeviceList = () => {
   try {
-    const output = execSync("adb devices", { encoding: "utf-8" });
-    return output
+    // First identify all emulator devices
+    const command =
+      "for serial in $(adb devices | awk 'NR>1&&$2==\"device\"&&$1~/^emulator-/ {print $1}'); do " +
+      "avd=$(adb -s \"$serial\" emu avd name </dev/null 2>/dev/null | tr -d '\\r' | sed '/^OK$/d' | head -n1); " +
+      "model=$(adb -s \"$serial\" shell getprop ro.product.model | tr -d '\\r'); " +
+      'echo "${avd}#${serial}#${model}"; ' +
+      "done";
+
+    const output = execSync(command, { encoding: "utf-8", shell: "/bin/bash" });
+
+    const parsedOutput = output
       .split("\n")
-      .slice(1)
-      .map((line) => line.trim())
-      .filter((line) => line && !line.endsWith("offline"));
+      .filter((line) => line.trim())
+      .map((line) => {
+        const [name, serial, model] = line.split("#");
+        return { name, serial, model };
+      });
+
+    console.log("Parsed ADB Device List:", parsedOutput);
+
+    return parsedOutput;
   } catch (error) {
+    console.error("Error getting ADB device list:", error.message);
     return [];
   }
 };

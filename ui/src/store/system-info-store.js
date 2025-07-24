@@ -6,7 +6,6 @@ export const useSystemInfoStore = create((set, get) => {
   let interval;
 
   return {
-    // data
     adbInstalled: null,
     adbVersion: null,
     adbDevices: null,
@@ -15,7 +14,6 @@ export const useSystemInfoStore = create((set, get) => {
     xcodeCLT: null,
     simulatorDevices: [],
 
-    // setters
     setAdbInstalled: (v) => set({ adbInstalled: v }),
     setAdbVersion: (v) => set({ adbVersion: v }),
     setAdbDevices: (v) => set({ adbDevices: v }),
@@ -24,7 +22,6 @@ export const useSystemInfoStore = create((set, get) => {
     setXcodeCLT: (v) => set({ xcodeCLT: v }),
     setSimulatorDevices: (v) => set({ simulatorDevices: v }),
 
-    // the initializer
     init: () => {
       const vscode = getVSCodeApi();
 
@@ -33,6 +30,9 @@ export const useSystemInfoStore = create((set, get) => {
         const msg = event.data;
         if (msg.command === "systemCheckResult") {
           const p = msg.payload;
+
+          console.log("Received system check result:", p);
+
           set({
             adbInstalled: p.adbInstalled,
             adbVersion: p.adbVersion,
@@ -62,3 +62,11 @@ export const useSystemInfoStore = create((set, get) => {
     },
   };
 });
+
+export const useAdbDevices = () => {
+  const devices = useSystemInfoStore(state => state.adbDevices);
+  return {
+    devices,
+    isLoading: devices === null,
+  };
+};

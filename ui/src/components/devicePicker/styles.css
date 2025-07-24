@@ -1,0 +1,70 @@
+.device-picker {
+    position: relative;
+    font-family: sans-serif;
+    width: 250px;
+}
+
+.device-picker__select {
+    appearance: none;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 0px 10px 10px;
+    width: 100%;
+}
+
+.device-picker__select:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+.device-picker__select:hover {
+    background: #eee;
+}
+
+.device-picker::after {
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #555;
+    pointer-events: none;
+}
+
+.device-picker__options {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    left: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
+}
+
+.device-picker.open .device-picker__options {
+    display: block;
+}
+
+.device-picker__options-item {
+    cursor: pointer;
+    padding: 8px 10px;
+}
+
+.device-picker__options-item:hover {
+    background: #f0f0f0;
+}
+
+.device-picker__options-item.selected {
+    background: #e7f0fd;
+    color: #4a90e2;
+}

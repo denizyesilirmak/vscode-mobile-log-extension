@@ -29,7 +29,7 @@ async function createAndShow() {
         payload: {
           adbInstalled: system.checkAdbInstalled(),
           adbVersion: system.getAdbVersion(),
-          adbDevices: system.getAdbDeviceList().length,
+          adbDevices: system.getAdbDeviceList(),
           xcodeInstalled: system.checkXcodeInstalled(),
           xcodeVersion: system.checkXcodeVersion(),
           xcodeCLT: system.checkXcodeCommandLineTools(),

@@ -36,10 +36,10 @@ const SystemCheck = () => {
         <CheckItem label="Adb Version" value={adbVersion || "Unknown"} />
         <CheckItem
           label="Adb Devices"
-          value={adbDevices}
+          value={(adbDevices?.length || 0) || "Unknown"}
           valueDisplay={
-            adbDevices !== null
-              ? `${adbDevices} Device${adbDevices !== 1 ? "s" : ""} Connected`
+            adbDevices?.length > 0
+              ? `${adbDevices.length} Device${adbDevices.length !== 1 ? "s" : ""} Connected`
               : null
           }
         />
